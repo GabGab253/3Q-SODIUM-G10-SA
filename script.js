@@ -10,8 +10,6 @@ let word = words[Math.floor(Math.random() * words.length)];
 let guessedWord = Array(word.length).fill("_");
 let lives = 5;
 
-document.getElementById("lives").textContent = lives;
-
 function setupGame() {
     document.getElementById("lives").textContent = lives;
 }
