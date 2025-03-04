@@ -2,13 +2,15 @@ let words = ["PLANT", "CHAIR", "TABLE", "BRICK", "CROWN", "DRIVE",
  "FLUTE", "GRAPE", "CANDY", "JUMBO", "KITES", "LATCH", "MONEY", "NIGHT",
  "OCEAN", "PLUMB", "QUICK", "RANCH", "STORM", "THUMP", "UPSET", "VIDEO", 
  "WALTZ", "CREAM", "YOUTH", "ZEBRA", "MONTH", "BRAIN", "CLOVE", "DELTA",
- "EAGLE", "FANCY", "GIANT", "HOUSE", "INPUT", "JOKER", "CRAZY", "LIGHT",
+ "EAGLE", "FANCY", "GIANT", "HOUSE", "INPUT", "GREEN", "CRAZY", "LIGHT",
  "BIRTH", "NOVEL", "OPERA", "PRISM", "QUIRK", "RHYME", "SCOUT", "TULIP",
- "URBAN", "TIRED", "MELON", "XENON", "YEARN", "ZONAL"];
- 
+ "URBAN", "TIRED", "MELON", "PIXEL", "YEARN", "ZONAL"];
+
 let word = words[Math.floor(Math.random() * words.length)];
-let guessedWord = Array(word.length).fill("_");
+let guessedWord = ["_", "_", "_", "_", "_"]; 
 let lives = 5;
+
+document.getElementById("lives").textContent = lives;
 
 function setupGame() {
     document.getElementById("lives").textContent = lives;
@@ -27,11 +29,21 @@ function checkLetter() {
         let index3 = word[3] === input ? 3 : -1;
         let index4 = word[4] === input ? 4 : -1;
         
-        if (index0 !== -1) guessedWord[0] = input;
-        if (index1 !== -1) guessedWord[1] = input;
-        if (index2 !== -1) guessedWord[2] = input;
-        if (index3 !== -1) guessedWord[3] = input;
-        if (index4 !== -1) guessedWord[4] = input;
+        if (index0 !== -1){ 
+			guessedWord[0] = input;
+		}
+        if (index1 !== -1){ 
+			guessedWord[1] = input;
+		}
+        if (index2 !== -1){ 
+			guessedWord[2] = input;
+		}
+        if (index3 !== -1){ 
+			guessedWord[3] = input;
+			}
+        if (index4 !== -1){ 
+			guessedWord[4] = input;
+			}
     } else {
         lives--;
         document.getElementById("lives").textContent = lives;
@@ -43,22 +55,34 @@ function checkLetter() {
     document.getElementById("s-2").textContent = guessedWord[2];
     document.getElementById("s-3").textContent = guessedWord[3];
     document.getElementById("s-4").textContent = guessedWord[4];
-    
+
     if (!guessedWord.includes("_")) {
         alert("Congratulations! You guessed the word.");
         restartGame();
     } else if (lives === 0) {
-        alert("Game Over! The word was " + word);
-        restartGame();
+        setTimeout(() => {
+            alert("Game Over! The word was " + word);
+            restartGame();
+        }, 100);
     }
 }
 
 function revealBodyPart() {
-    if (lives === 4) document.getElementById("head").style.display = "block";
-    if (lives === 3) document.getElementById("torso").style.display = "block";
-    if (lives === 2) document.getElementById("arm-1").style.display = "block";
-    if (lives === 1) document.getElementById("arm-2").style.display = "block";
-    if (lives === 0) document.getElementById("foot-1").style.display = "block";
+    if (lives === 4){
+		document.getElementById("head").style.display = "block";
+	}
+    if (lives === 3){
+		document.getElementById("torso").style.display = "block";
+	}
+    if (lives === 2){
+		document.getElementById("arm-1").style.display = "block";
+	}
+    if (lives === 1){
+		document.getElementById("arm-2").style.display = "block";
+	}
+    if (lives === 0){
+		document.getElementById("foot-1").style.display = "block";
+	}
 }
 
 function restartGame() {
