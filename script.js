@@ -2,7 +2,7 @@ let words = ["PLANT", "CHAIR", "TABLE", "BRICK", "CROWN", "DRIVE",
  "FLUTE", "GRAPE", "CANDY", "JUMBO", "KITES", "LATCH", "MONEY", "NIGHT",
  "OCEAN", "PLUMB", "QUICK", "RANCH", "STORM", "THUMP", "UPSET", "VIDEO", 
  "WALTZ", "CREAM", "YOUTH", "ZEBRA", "MONTH", "BRAIN", "CLOVE", "DELTA",
- "EAGLE", "FANCY", "GIANT", "HOUSE", "INPUT", "GREEN", "CRAZY", "LIGHT",
+ "EAGLE", "FANCY", "GIANT", "HOUSE", "INPUT", "JOKER", "CRAZY", "LIGHT",
  "BIRTH", "NOVEL", "OPERA", "PRISM", "QUIRK", "RHYME", "SCOUT", "TULIP",
  "URBAN", "TIRED", "MELON", "PIXEL", "YEARN", "ZONAL"];
 
@@ -17,6 +17,7 @@ function setupGame() {
 }
 
 function checkLetter() {
+    if (lives === 0) return;
     let input = prompt("Enter a letter:").toUpperCase();
     if (input === null || input.length !== 1 || !input.match(/[A-Z0-9]/)) {
         return;
@@ -40,10 +41,10 @@ function checkLetter() {
 		}
         if (index3 !== -1){ 
 			guessedWord[3] = input;
-			}
+		}
         if (index4 !== -1){ 
 			guessedWord[4] = input;
-			}
+		}
     } else {
         lives--;
         document.getElementById("lives").textContent = lives;
