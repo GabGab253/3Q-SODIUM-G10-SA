@@ -77,12 +77,13 @@ function revealBodyPart() {
 	}
     if (lives === 2){
 		document.getElementById("arm-1").style.display = "block";
+	    	document.getElementById("arm-2").style.display = "block";
 	}
     if (lives === 1){
-		document.getElementById("arm-2").style.display = "block";
+		document.getElementById("foot-1").style.display = "block";
 	}
     if (lives === 0){
-		document.getElementById("foot-1").style.display = "block";
+		document.getElementById("foot-2").style.display = "block";
 	}
 }
 
